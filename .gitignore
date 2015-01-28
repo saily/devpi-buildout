@@ -7,3 +7,8 @@
 /var/devpi
 /var/supervisor.sock
 /var/supervisord.pid
+/include
+/lib
+/.Python
+*.egg-info
+*.py[c|o]
