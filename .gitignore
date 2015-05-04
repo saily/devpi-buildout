@@ -12,3 +12,4 @@
 /var/
 get-pip.py
 pip-selfcheck.json
+buildout.cfg
