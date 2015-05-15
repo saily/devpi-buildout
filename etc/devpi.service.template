@@ -4,12 +4,11 @@ After=network-online.target
 
 [Service]
 Type=forking
-PIDFile=${buildout:directory}/var/supervisord.pid
-Restart=always
 ExecStart=${buildout:directory}/bin/devpi-server ${devpi:devpi-server-options} --start
 ExecStop=${buildout:directory}/bin/devpi-server ${devpi:devpi-server-options} --stop
 User=${buildout:effective-user}
 WorkingDirectory=${buildout:directory}
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
