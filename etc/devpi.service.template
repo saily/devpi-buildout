@@ -4,8 +4,8 @@ After=network-online.target
 
 [Service]
 Type=forking
-ExecStart=${buildout:directory}/bin/devpi-server ${devpi:devpi-server-options} --start
-ExecStop=${buildout:directory}/bin/devpi-server ${devpi:devpi-server-options} --stop
+ExecStart=${buildout:directory}/bin/devpi-server --port ${devpi:port} --serverdir ${devpi:server-dir} --debug --start
+ExecStop=${buildout:directory}/bin/devpi-server --port ${devpi:port} --serverdir ${devpi:server-dir} --debug --stop
 User=${buildout:effective-user}
 WorkingDirectory=${buildout:directory}
 Restart=always
