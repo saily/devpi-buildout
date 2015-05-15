@@ -9,6 +9,7 @@ Restart=always
 ExecStart=${buildout:directory}/bin/devpi-server ${devpi:devpi-server-options} --start
 ExecStop=${buildout:directory}/bin/devpi-server ${devpi:devpi-server-options} --stop
 User=${buildout:effective-user}
+WorkingDirectory=${buildout:directory}
 
 [Install]
 WantedBy=multi-user.target
