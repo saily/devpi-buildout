@@ -5,7 +5,6 @@
 /.mr.developer.cfg
 /bin
 /develop-eggs
-/etc
 /include
 /lib
 /parts
@@ -13,3 +12,5 @@
 get-pip.py
 pip-selfcheck.json
 buildout.cfg
+etc/devpi-server.plist
+etc/supervisord.conf
