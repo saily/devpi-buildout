@@ -1,0 +1,5 @@
+http_proxy=http://${buildout:proxy_host}:${buildout:proxy_port}
+https_proxy=http://${buildout:proxy_host}:${buildout:proxy_port}
+all_proxy=http://${buildout:proxy_host}:${buildout:proxy_port}
+ftp_proxy=http://${buildout:proxy_host}:${buildout:proxy_port}
+no_proxy=${buildout:no_proxy}"
