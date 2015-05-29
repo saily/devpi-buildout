@@ -4,7 +4,9 @@ After=network-online.target
 
 [Service]
 Type=forking
-EnvironmentFile=${buildout:directory}/etc/proxy
+# This was the only thing which is working
+Environment=HTTPS_PROXY=http://${buildout:proxy_host}:${buildout:proxy_port}/
+# EnvironmentFile=-${buildout:directory}/etc/proxy
 ExecStart=${buildout:directory}/bin/devpi-server --port ${devpi:port} --serverdir ${devpi:server-dir} --debug --start
 ExecStop=${buildout:directory}/bin/devpi-server --port ${devpi:port} --serverdir ${devpi:server-dir} --debug --stop
 User=${buildout:effective-user}
