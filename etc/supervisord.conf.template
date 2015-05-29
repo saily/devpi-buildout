@@ -8,6 +8,7 @@ serverurl=unix://${buildout:directory}/var/supervisor.sock
 supervisor.rpcinterface_factory=supervisor.rpcinterface:make_main_rpcinterface
 
 [supervisord]
+environment = no_proxy="${buildout:no_proxy}", http_proxy="http://${buildout:proxy_host}:${buildout:proxy_port}", https_proxy="http://${buildout:proxy_host}:${buildout:proxy_port}", ftp_proxy="http://${buildout:proxy_host}:${buildout:proxy_port}", all_proxy="http://${buildout:proxy_host}:${buildout:proxy_port}"
 logfile=${buildout:directory}/var/log/supervisord.log
 logfile_maxbytes=5MB
 logfile_backups=10

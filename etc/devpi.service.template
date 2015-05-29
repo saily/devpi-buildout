@@ -4,6 +4,11 @@ After=network-online.target
 
 [Service]
 Type=forking
+Environment="http_proxy=http://${buildout:proxy_host}:${buildout:proxy_port}"
+Environment="https_proxy=http://${buildout:proxy_host}:${buildout:proxy_port}"
+Environment="all_proxy=http://${buildout:proxy_host}:${buildout:proxy_port}"
+Environment="ftp_proxy=http://${buildout:proxy_host}:${buildout:proxy_port}"
+Environment="no_proxy=${buildout:no_proxy}"
 ExecStart=${buildout:directory}/bin/devpi-server --port ${devpi:port} --serverdir ${devpi:server-dir} --debug --start
 ExecStop=${buildout:directory}/bin/devpi-server --port ${devpi:port} --serverdir ${devpi:server-dir} --debug --stop
 User=${buildout:effective-user}
