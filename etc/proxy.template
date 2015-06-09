@@ -1,5 +1,0 @@
-ALL_PROXY=http://${buildout:proxy_host}:${buildout:proxy_port}/
-FTP_PROXY=http://${buildout:proxy_host}:${buildout:proxy_port}/
-HTTP_PROXY=http://${buildout:proxy_host}:${buildout:proxy_port}/
-HTTPS_PROXY=http://${buildout:proxy_host}:${buildout:proxy_port}/
-NO_PROXY=${buildout:no_proxy}

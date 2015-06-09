@@ -1,0 +1,25 @@
+[unix_http_server]
+file={{ parts.buildout.directory }}/var/supervisor.sock
+
+[supervisorctl]
+serverurl=unix://{{ parts.buildout.directory }}/var/supervisor.sock
+
+[rpcinterface:supervisor]
+supervisor.rpcinterface_factory=supervisor.rpcinterface:make_main_rpcinterface
+
+[supervisord]
+{% if parts.buildout.proxy_host %}
+environment = no_proxy="{{ parts.buildout.no_proxy }}", http_proxy="http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}", https_proxy="http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}", ftp_proxy="http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}", all_proxy="http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}"
+{% endif %}
+logfile={{ parts.buildout.directory }}/var/log/supervisord.log
+logfile_maxbytes=5MB
+logfile_backups=10
+loglevel=info
+pidfile={{ parts.buildout.directory }}/var/supervisord.pid ;
+childlogdir={{ parts.buildout.directory }}/var/log
+nodaemon=false              ; (start in foreground if true;default false)
+minfds=1024                 ; (min. avail startup file descriptors;default 1024)
+minprocs=200                ; (min. avail process descriptors;default 200)
+directory={{ parts.buildout.directory }}
+
+{{ parts.devpi.supervisor }}

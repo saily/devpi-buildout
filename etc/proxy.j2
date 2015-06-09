@@ -1,0 +1,7 @@
+{% if parts.buildout.proxy_host %}
+ALL_PROXY=http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}/
+FTP_PROXY=http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}/
+HTTP_PROXY=http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}/
+HTTPS_PROXY=http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}/
+NO_PROXY={{ parts.buildout.no_proxy }}
+{% endif %}

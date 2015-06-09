@@ -26,9 +26,9 @@ Create a ``buildout.cfg`` file with your configuration extended from
     [buildout]
     extends = devpi.cfg
     effective-user = user-username
-    proxy_host =
-    proxy_port =
-    no_proxy =
+    # proxy_host =
+    # proxy_port =
+    # no_proxy =
 
     # Optional override of data-dir
     # [devpi]

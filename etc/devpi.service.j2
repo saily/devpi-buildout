@@ -1,0 +1,21 @@
+[Unit]
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+{% if parts.buildout.proxy_host %}
+# This was the only thing which is working
+Environment=HTTPS_PROXY=http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}/
+# EnvironmentFile=-{{ parts.buildout.directory }}/etc/proxy
+{% endif %}
+ExecStart={{ parts.buildout.directory }}/bin/devpi-server --port {{ parts.devpi.port }} --serverdir {{ parts.devpi['server-dir'] }} --debug --start
+ExecStop={{ parts.buildout.directory }}/bin/devpi-server --port {{ parts.devpi.port }} --serverdir {{ parts.devpi['server-dir'] }} --debug --stop
+{% if parts.buildout['effective-user'] %}
+User={{ parts.buildout['effective-user'] }}
+{% endif %}
+WorkingDirectory={{ parts.buildout.directory }}
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
