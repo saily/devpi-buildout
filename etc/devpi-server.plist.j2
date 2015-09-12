@@ -2,22 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-  <key>KeepAlive</key>
-  <true/>
-  <key>Label</key>
-  <string>net.devpi.devpi-server</string>
-  <key>ProgramArguments</key>
-  <array>
-    <string>{{ parts.buildout.directory }}/bin/devpid</string>
-    <string>-n</string>
-  </array>
-  <key>RunAtLoad</key>
-  <true/>
-  <key>WorkingDirectory</key>
-  <string>{{ parts.buildout.directory }}</string>
-  <key>StandardOutPath</key>
-  <string>{{ parts.buildout.directory }}/var/devpi-server-stdout.log</string>
-  <key>StandardErrorPath</key>
-  <string>{{ parts.buildout.directory }}/var/devpi-server-stderr.log</string>
+    <key>KeepAlive</key>
+    <true/>
+    <key>Label</key>
+    <string>net.devpi.devpi-server</string>
+    <key>Nice</key>
+    <integer>5</integer>
+    <key>ProgramArguments</key>
+    <array>
+        <string>{{ parts.buildout.directory }}/bin/devpi-server</string>
+        <string>--host={{ parts.devpi.host }}</string>
+        <string>--port={{ parts.devpi.port }}</string>
+        <string>--serverdir={{ parts.devpi["server-dir"] }}</string>
+        <string>--debug</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>WorkingDirectory</key>
+    <string>{{ parts.buildout.directory }}/</string>
+    <key>StandardOutPath</key>
+    <string>{{ parts.buildout.directory }}/var/devpi-server-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>{{ parts.buildout.directory }}/var/devpi-server-stderr.log</string>
 </dict>
 </plist>
