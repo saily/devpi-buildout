@@ -10,6 +10,7 @@
 /etc/devpi-server.plist
 /etc/devpi.service
 /etc/supervisord.conf
+/etc/proxy
 /gen-config/
 /get-pip.py
 /include
