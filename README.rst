@@ -37,7 +37,7 @@ Create a ``buildout.cfg`` file with your configuration extended from
 Now you're ready to execute buildout::
 
     virtualenv .
-    bin/python bootstrap.py
+    bin/pip install -r requirements.txt
     bin/buildout
 
 Run
