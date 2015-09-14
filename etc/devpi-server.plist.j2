@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
+<dict>{% if parts.buildout.proxy_host %}
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>all_proxy</key>
+        <string>http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}/</string>
+        <key>http_proxy</key>
+        <string>http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}/</string>
+        <key>https_proxy</key>
+        <string>http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}/</string>
+        <key>ftp_proxy</key>
+        <string>http://{{ parts.buildout.proxy_host }}:{{ parts.buildout.proxy_port }}/</string>
+        <key>no_proxy</key>
+        <string>{{ parts.buildout.no_proxy }}</string>
+    </dict>{% endif %}
     <key>KeepAlive</key>
     <true/>
     <key>Label</key>
